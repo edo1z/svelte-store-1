@@ -32,6 +32,29 @@
 
 <p>this is hoge page. thank you.</p>
 
+<div class="canvas-wrapper">
+	<div>
+		<div>hoge</div>
+		<div>
+			<button on:click={() => goto('/')}>go back home</button>
+		</div>
+	</div>
+</div>
 <Icon />
 
-<button on:click={() => goto('/')}>go back home</button>
+<style>
+	.canvas-wrapper {
+		backdrop-filter: blur(10px);
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 100px;
+		font-weight: bold;
+	}
+</style>
