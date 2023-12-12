@@ -52,3 +52,5 @@
 </FancyList>
 
 <button on:click={() => goto('/hoge')}>go hoge</button>
+
+<button on:click={() => goto('/three')}>go to three</button>

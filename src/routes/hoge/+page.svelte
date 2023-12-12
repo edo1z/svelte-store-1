@@ -37,6 +37,8 @@
 		<div>hoge</div>
 		<div>
 			<button on:click={() => goto('/')}>go back home</button>
+			<button on:click={() => goto('/apple')}>go to apple</button>
+			<button on:click={() => goto('/banana')}>go to banana</button>
 		</div>
 	</div>
 </div>
