@@ -3,14 +3,16 @@
 	import Uppy from '@uppy/core';
 	import DropTarget from '@uppy/drop-target';
 	import ThumbnailGenerator from '@uppy/thumbnail-generator';
+	import Modal from '$lib/components/Modal.svelte';
 
 	let isCsr = false;
+	let showModal = false; // Add a flag for showing the modal
 	let uppy: Uppy = new Uppy({
 		restrictions: {
 			maxNumberOfFiles: 1
 		},
 		onBeforeFileAdded: (currentFile, files) => {
-      console.log('onBeforeFileAdded!!!', files);
+			console.log('onBeforeFileAdded!!!', files);
 			return true;
 		}
 	}).use(ThumbnailGenerator, {
@@ -20,6 +22,7 @@
 	let dropTargetElem: HTMLElement;
 	let fileInputElem: HTMLElement;
 	let previewSrc: string;
+	let fileToEdit; // Add a variable to hold the file to be edited
 
 	onMount(() => {
 		isCsr = true;
@@ -67,11 +70,17 @@
 	}
 
 	uppy.on('restriction-failed', (file, error) => {
-    console.log('それはだめだぜえ', error);
+		console.log('それはだめだぜえ', error);
 	});
 
 	uppy.on('file-added', (file) => {
 		console.log('ファイルが追加されました:', file);
+		fileToEdit = file; // Set the file to be edited
+		showModal = true; // Show the modal when a file is added
+	});
+
+	uppy.on('file-editor:start', (file) => {
+		console.log('file-editor:start', file);
 	});
 
 	uppy.on('thumbnail:generated', (file, preview) => {
@@ -92,6 +101,11 @@
 		uppy.close();
 	});
 </script>
+
+<!-- Add the modal to the markup -->
+{#if showModal}
+	<Modal {uppy} on:close={() => (showModal = false)} />
+{/if}
 
 <h2>DragDrop</h2>
 

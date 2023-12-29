@@ -21,6 +21,7 @@
 		"@typescript-eslint/parser": "^6.16.0",
 		"@uppy/drop-target": "^2.0.2",
 		"@uppy/file-input": "^3.0.4",
+		"@uppy/image-editor": "^2.4.0",
 		"@uppy/thumbnail-generator": "^3.0.6",
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
